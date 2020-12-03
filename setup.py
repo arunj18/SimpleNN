@@ -10,9 +10,7 @@ setup(
     license='MIT',
     packages=['SimpleNN'],
     install_requires = [
-        'numpy',
-        'copy',
-        'typing'
+        'numpy>=1.19.4'
     ],
     zip_safe=False
 )

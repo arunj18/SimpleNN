@@ -1,5 +1,5 @@
 # SimpleNN	
-
+(Python 3.8.6)
 SimpleNN is a simple Neural Network implementation done via NumPy. It has a simple api and allows activations to be set on each layer of the network. 
 
 ## Install
