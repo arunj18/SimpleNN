@@ -62,7 +62,7 @@ class Network(object):
                b: np.ndarray,
                dW: np.ndarray,
                db: np.ndarray,
-               alpha: float) -> tuple(np.ndarray,np.ndarray) :
+               alpha: float) -> tuple([np.ndarray,np.ndarray]) :
         '''
         Description: Function to update W and b, given dW, db and learning rate alpha
         Parameters:
@@ -120,7 +120,7 @@ class Network(object):
             X_in = layer['output']
             dim_in = layer['no_neurons'] #change input dimension to layer output neuron
     
-    def _error_calc(self ,target: np.ndarray) -> tuple(np.ndarray,np.ndarray):
+    def _error_calc(self ,target: np.ndarray) -> tuple([np.ndarray,np.ndarray]):
         '''
         Description: Error calculation function, takes target vector and calculates error and derivative of cost function
         Parameters:
