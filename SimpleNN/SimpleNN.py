@@ -136,7 +136,7 @@ class Network(object):
             
         '''
         end = self.network_dict['end']
-        error = 0.5*np.square(target - self.network_dict[end]['output'])
+        error = 0.5*np.square(target - self.network_dict[end]['output']) # make your 
         deriv = target-self.network_dict[end]['output']
         return error, deriv
     
@@ -241,7 +241,7 @@ class Network(object):
             self.network_dict['begin'] = name
         return self
             
-    def train(self,X: np.ndarray , target: np.ndarray ,learning_rate: float, max_epoch: int = 20000) -> tuple(list,list):
+    def train(self,X: np.ndarray , target: np.ndarray ,learning_rate: float, max_epoch: int = 20000) -> tuple([list,list]):
         '''
         Description: function to train the network
         Parameters:
@@ -268,14 +268,34 @@ class Network(object):
                 self._feed_forward(X[j,np.newaxis].T)
 
                 error,deriv = self._error_calc(target[j,np.newaxis])
-
-                
                 epoch_error += abs(error)
                 self._back_prop(deriv)
-                self._make_updates(learning_rate)
+            
+            self._make_updates(learning_rate) #make updates at end of epoch
 
 
             errors.append(epoch_error[0,:])
             if epoch_error <= 0.01:
                 return i+1,errors
-    
+
+    def eval(self,X: np.ndarray) -> tuple([list,list]):
+        '''
+            Description: function to evaluate the network
+            Parameters:
+                X:
+                    Type: NumPy array of shape (number of observations,input_num)
+                    Description: Input to the network
+            returns:
+                predicted values using the network
+                
+        '''
+        end = self.network_dict['end']
+        list_outputs = []
+        for j in range(X.shape[0]):
+            self._feed_forward(X[j,np.newaxis].T)
+            j_output = self.network_dict[end]['output']
+            list_outputs.append(j_output)
+        return np.vstack(list_outputs)
+
+            
+
