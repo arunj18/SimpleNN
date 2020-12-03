@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='SimpleNN',
-    version='0.0.2',
+    version='0.0.3',
     description='Simple Multi Layer Neural Network',
     url='git@github.com:arunj18/SimpleNN.git',
     author='Arun John',
